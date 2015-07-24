@@ -1,0 +1,30 @@
+<%= form_for [current_user, @systolic_range] do |f| %>
+  <% if @systolic_range.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@systolic_range.errors.count, "error") %> prohibited this reading from being saved:</h2>
+
+      <ul>
+      <% @systolic_range.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <table>
+    <th>
+      <tr>
+        <td><%= f.label :low %></td>
+        <td><%= f.label :medium %></td>
+        <td><%= f.label :high %></td>
+      </tr>
+    </th>
+      <tr>
+        <td><%= f.number_field :low %></td>
+        <td><%= f.number_field :medium %></td>
+        <td><%= f.number_field :high %></td>
+      </tr>
+  </table>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
