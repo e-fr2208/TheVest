@@ -1,0 +1,56 @@
+<p id="notice"><%= notice %></p>
+<h1>Hi, <%= @user.firstname %> </h1>
+
+<h2>Please Enter Your Systolic Range</h2>
+
+  <% if @user.systolic_range %> 
+    <table>
+      <th>
+        <tr>
+          <td>Low</td>
+          <td>Medium</td>
+          <td>High</td>
+        </tr>
+      </th>
+        <tr>
+          <td><%= @user.systolic_range.low %></td>
+          <td><%= @user.systolic_range.medium %></td>
+          <td><%= @user.systolic_range.high %></td>
+        </tr>
+        <tr>
+          <td><%= link_to 'Edit', edit_user_systolic_range_path(@user, @user.systolic_range) %></td>
+        </tr>
+    </table>
+  <% else %>
+    <%= render 'systolic_form' %>
+  <% end %>  
+
+<h2>Log Your Blood Pressure Readings</h2>
+
+<table>
+  <thead>
+    <tr> 
+      <th>Systolic</th>
+      <th>Diastolic</th>
+      <th>Heart rate</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @readings.each do |reading| %>
+      <tr>
+        <td><%= reading.systolic %></td>
+        <td><%= reading.diastolic %></td>
+        <td><%= reading.heart_rate %></td>
+        <td><%= link_to 'Show', user_reading_path(current_user, reading)%></td>
+        <td><%= link_to 'Edit', edit_user_reading_path(current_user, reading) %></td>
+        <td><%= link_to 'Destroy', user_reading_path(current_user, reading), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Reading', new_user_reading_path(current_user) %>

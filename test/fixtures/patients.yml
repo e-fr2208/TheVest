@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  age: MyString
+  blood_type: MyString
+  guardian_number: 1
+  user_id: 
+
+two:
+  name: MyString
+  age: MyString
+  blood_type: MyString
+  guardian_number: 1
+  user_id: 

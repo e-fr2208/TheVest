@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Systolic:</strong>
+  <%= @reading.systolic %>
+</p>
+
+<p>
+  <strong>Diastolic:</strong>
+  <%= @reading.diastolic %>
+</p>
+
+<p>
+  <strong>Heart rate:</strong>
+  <%= @reading.heart_rate %>
+</p>
+
+<%= link_to 'Edit', edit_user_reading_path %> |
+<%= link_to 'Back', user_readings_path %>
