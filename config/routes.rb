@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+
   
 
   devise_for :users, controllers: { 
@@ -15,6 +16,7 @@ Rails.application.routes.draw do
 
   # You can have the root of your site routed with "root"
    root 'readings#index'
+
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
@@ -107,3 +109,4 @@ end
 #                          PUT    /users/:id(.:format)                               users#update
 #                          DELETE /users/:id(.:format)                               users#destroy
 #                     root GET    /                                                  readings#index
+
