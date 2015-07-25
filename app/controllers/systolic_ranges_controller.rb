@@ -12,7 +12,7 @@ class SystolicRangesController < ApplicationController
   	@systolic_range = SystolicRange.new(systolic_range_params)
   	respond_to do |format|
       if @systolic_range.save
-        format.html { redirect_to user_systolic_ranges_path, notice: 'Systolic Range was successfully created.' }
+        format.html { redirect_to user_readings_path(current_user), notice: 'Systolic Range was successfully created.' }
         format.json { render :show, status: :created, location: @systolic_range }
       else
         format.html { render :new }
@@ -28,7 +28,7 @@ class SystolicRangesController < ApplicationController
   def update
   	respond_to do |format|
       if @systolic_range.update(systolic_range_params)
-        format.html { redirect_to user_readings_path, notice: 'systolic_range was successfully updated.' }
+        format.html { redirect_to user_readings_path(current_user), notice: 'systolic_range was successfully updated.' }
         format.json { render :show, status: :ok, location: @systolic_range }
       else
         format.html { render :edit }
@@ -46,6 +46,6 @@ class SystolicRangesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def systolic_range_params
-      params.require(:systolic_range).permit(:low, :medium, :high)
+      params.require(:systolic_range).permit(:user_id, :low, :medium, :high)
     end
 end
