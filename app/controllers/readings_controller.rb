@@ -7,6 +7,7 @@ class ReadingsController < ApplicationController
   # GET /readings.json
   def index
     @user = current_user
+    @systolic_range = @user.systolic_range
     @readings = Reading.all
   end
 
