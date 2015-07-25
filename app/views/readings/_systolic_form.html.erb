@@ -1,10 +1,10 @@
-<%= form_for @systolic_range(current_user) do |f| %>
-  <% if @user.systolic_range.errors.any? %>
+<%= form_for [@user, @systolic_range] do |f| %>
+  <% if @systolic_range.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@user.systolic_range.errors.count, "error") %> prohibited this reading from being saved:</h2>
+      <h2><%= pluralize(@systolic_range.errors.count, "error") %> prohibited this reading from being saved:</h2>
 
       <ul>
-      <% @user.systolic_range.errors.full_messages.each do |message| %>
+      <% @systolic_range.errors.full_messages.each do |message| %>
         <li><%= message %></li>
       <% end %>
       </ul>
