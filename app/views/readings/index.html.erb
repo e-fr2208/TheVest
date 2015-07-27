@@ -7,15 +7,18 @@
     <table>
       <th>
         <tr>
-          <td>Low</td>
-          <td>Medium</td>
-          <td>High</td>
+          <td>Low </td>
+          <td>Medium </td>
+          <td>High </td>
         </tr>
       </th>
         <tr>
           <td><%= @user.systolic_range.low %></td>
           <td><%= @user.systolic_range.medium %></td>
           <td><%= @user.systolic_range.high %></td>
+        </tr>
+        <tr>
+          <td></td>
         </tr>
         <tr>
           <td><%= link_to 'Edit', edit_user_systolic_range_path(@user, @user.systolic_range) %></td>
