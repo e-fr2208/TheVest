@@ -24,6 +24,10 @@
     <%= f.number_field :heart_rate %>
   </div>
   <div class="field">
+    <%= f.label :time %> <br> 
+    <%= f.datetime_local_field :time %> 
+  </div>
+  <div class="field">
     <%= f.hidden_field :user_id, value: current_user.id %> 
   </div>
   <div class="actions">

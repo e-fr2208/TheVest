@@ -38,11 +38,11 @@ class ReadingsController < ApplicationController
         format.json { render :show, status: :created, location: @reading }
           if @reading.systolic > current_user.systolic_range.high || @reading.diastolic < current_user.systolic_range.low
             # Get your Account Sid and Auth Token from twilio.com/user/account
-            account_sid = 'AC2fd0b7cc7f2cf2d3e2734452152705c1'
-            auth_token = '0f72f16fc1ac47960170fd06a31705cc'
+            account_sid = 'AC63de569ccbfd715bed71f1bd6d884215'
+            auth_token = '447c2138b017c4bf199553496fab3554'
             @client = Twilio::REST::Client.new account_sid, auth_token
    
-            message = @client.account.messages.create(:body => "Jenny please?! I love you <3",
+            message = @client.account.messages.create(:body => "#{current_user.firstname} #{current_user.lastname}'s blood pressure is outside of normal range",
                 :to => current_user.guardian_phone_number, 
                 :from => current_user.phone_number)
             puts message.to
@@ -61,7 +61,7 @@ class ReadingsController < ApplicationController
       if @reading.update(reading_params)
         format.html { redirect_to user_readings_path, notice: 'Reading was successfully updated.' }
         format.json { render :show, status: :ok, location: @reading }
-        if @reading.systolic > 90 || @reading.diastolic > 45
+       if @reading.systolic > current_user.systolic_range.high || @reading.diastolic < current_user.systolic_range.low
             # Get your Account Sid and Auth Token from twilio.com/user/account
             account_sid = 'AC63de569ccbfd715bed71f1bd6d884215'
             auth_token = '447c2138b017c4bf199553496fab3554'
@@ -99,6 +99,6 @@ class ReadingsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def reading_params
-      params.require(:reading).permit(:systolic, :diastolic, :heart_rate)
+      params.require(:reading).permit(:systolic, :diastolic, :heart_rate, :time)
     end
 end
